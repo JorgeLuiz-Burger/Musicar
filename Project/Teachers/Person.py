@@ -6,13 +6,12 @@ Arquivo orientado a objeto para descrever os professores presentes na escola.
         1. Nome completo
         2. Idade
         3. Aniversário
-        4. CPF
-        5. Telefone para contato
-        6. E-mail para contato
-        7. Conta bancária
-        8. Pix
-        9. Endereço
-        10.
+        4. Endereço
+        5. CPF
+        6. Telefone para contato
+        7. E-mail para contato
+        8. Conta bancária e Pix
+        9.
 
         INSTITUCIONAIS
         1. Data de entrada na escola
@@ -51,10 +50,11 @@ class newTeacher():
         self.__name = dfName
         self.__age = dfNumber
         self.__birthDay = [dfNumber, dfNumber, dfNumber]  # Day / Month / Year
+        self.__address = [dfTxt, dfNumber, dfTxt, dfNumber]  # Street / Number / Complement / CEP
         self.__cpf = dfTxt  # xxx.xxx.xxx-xx
         self.__phone = dfTxt  # (xx) 9xxxx-xxxx
         self.__email = dfTxt  # nome@email.com
-        self.__banc = [dfTxt, dfNumber, dfNumber]  # Nome do banco / Agência / Conta
+        self.__bank = [dfTxt, dfNumber, dfNumber, dfTxt]  # Nome do banco / Agência / Conta / Pix
 
         self.__startData = [dfNumber, dfNumber, dfNumber]  # Day / Month / Year
         self.__classes = []
@@ -65,11 +65,12 @@ class newTeacher():
         print(f"""
     Profissional {self.__name}, {self.__age} anos de {self.__birthDay[0]}/{self.__birthDay[1]}/{self.__birthDay[2]}.
     
+    Endereço: {self.__address[0]}, {self.__address[1]}, {self.__address[2]}, {self.__address[3]}
     CPF: {self.__cpf}
     Telefone: {self.__phone}
     E-Mail: {self.__email}
     
-    Banco {self.__banc[0]}, ag {self.__banc[1]} - conta {self.__banc[2]}
+    pix {self.__bank[0]} - Banco {self.__bank[1]}, ag {self.__bank[2]} - conta {self.__bank[3]}
     
     Entrou na Musicar em {self.__startData[0]}/{self.__startData[1]}/{self.__startData[2]}
     
@@ -85,46 +86,41 @@ class newTeacher():
         self.__name = name
 
     def setAge(self, age):
-        self.__name = age
+        self.__age = age
 
     def setBirthDay(self, day, month, year):
         self.__birthDay[0] = day
         self.__birthDay[1] = month
         self.__birthDay[2] = year
 
+    def setAddress(self, street, number, complement, cep):
+        self.__address[0] = street
+        self.__address[1] = number
+        self.__address[2] = complement
+        self.__address[3] = str(cep)[:-3] + '-' + str(cep)[-3:]
+
     def setCpf(self, cpf):
-        self.__cpf = cpf
+        self.__cpf = cpf[:3] + '.' + cpf[3:6] + '.' + cpf[6:9] + '-' + cpf[9:]
 
     def setPhone(self, phone):
-        self.__phone = phone
+        self.__phone = '(' + phone[:2] + ') ' + phone[2:7] + '-' + phone[7:]
 
     def setEmail(self, email):
         self.__email = email
 
-    def setBanc(self, name, ag, cn):
-        self.__banc[0] = name
-        self.__banc[1] = ag
-        self.__banc[2] = cn
-
-        # Erro encontrado, Informações bancárias incorretas
-        if dfNumber in self.__startData:
-            return 8
+    def setBank(self, pix, name, ag, cn):
+        self.__bank[0] = pix
+        self.__bank[1] = name
+        self.__bank[2] = ag
+        self.__bank[3] = cn
 
     def setStartDay(self, day, month, year):
         self.__startData[0] = day
         self.__startData[1] = month
         self.__startData[2] = year
 
-        # Erro encontrado, Informações de entrada incorretas
-        if dfNumber in self.__startData:
-            return 8
-
     def setPayment(self, value):
         self.__payment = value
-
-        # Erro encontrado, salário não pode ser 0
-        if self.__payment == dfNumber:
-            return 9
 
     def verifyData(self):
         if self.__name == dfName:
@@ -136,26 +132,29 @@ class newTeacher():
         if dfNumber in self.__birthDay:
             return 3
 
-        if self.__cpf == dfTxt:
+        if (dfTxt in self.__address) or (dfNumber in self.__address):
             return 4
 
-        if self.__phone == dfTxt:
+        if self.__cpf == dfTxt:
             return 5
 
-        if self.__email == dfTxt:
+        if self.__phone == dfTxt:
             return 6
 
-        # Erro encontrado, Informações bancárias incorretas
-        if (dfTxt in self.__banc) or (dfNumber in self.__banc):
+        if self.__email == dfTxt:
             return 7
+
+        # Erro encontrado, Informações bancárias incorretas
+        if (dfTxt in self.__bank) or (dfNumber in self.__bank):
+            return 8
 
         # Erro encontrado, Informações de entrada incorretas
         if dfNumber in self.__startData:
-            return 8
+            return 9
 
         # Erro encontrado, salário não pode ser 0
         if self.__payment == dfNumber:
-            return 9
+            return 10
 
         return 0
 
