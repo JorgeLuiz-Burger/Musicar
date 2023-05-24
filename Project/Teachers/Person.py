@@ -10,14 +10,19 @@ Arquivo orientado a objeto para descrever os professores presentes na escola.
         5. Telefone para contato
         6. E-mail para contato
         7. Conta bancária
-        8.
+        8. Pix
+        9. Endereço
+        10.
 
         INSTITUCIONAIS
         1. Data de entrada na escola
         2. Turmas que leciona
         3. Horários ocupados
-        4. Salário por aula
-        5.
+        4. Método de salário (Hora / Alunos)
+        5. Salário recebido
+        6. Recuperação
+        7. Notas enviadas
+        8.
 
     * Ações a se tomar com os professores?
         1. Adicionar uma turma
@@ -55,6 +60,26 @@ class newTeacher():
         self.__classes = []
         self.__schedule = []
         self.__payment = dfNumber
+
+    def showInfo(self):
+        print(f"""
+    Profissional {self.__name}, {self.__age} anos de {self.__birthDay[0]}/{self.__birthDay[1]}/{self.__birthDay[2]}.
+    
+    CPF: {self.__cpf}
+    Telefone: {self.__phone}
+    E-Mail: {self.__email}
+    
+    Banco {self.__banc[0]}, ag {self.__banc[1]} - conta {self.__banc[2]}
+    
+    Entrou na Musicar em {self.__startData[0]}/{self.__startData[1]}/{self.__startData[2]}
+    
+    Leciona as seguintes aulas:
+    {self.__classes}
+    
+    Nos horários:
+    {self.__schedule}
+    
+    Recebendo {self.__payment} por aula. """)
 
     def setName(self, name):
         self.__name = name
@@ -101,7 +126,7 @@ class newTeacher():
         if self.__payment == dfNumber:
             return 9
 
-    def verifyCreation(self):
+    def verifyData(self):
         if self.__name == dfName:
             return 1
 

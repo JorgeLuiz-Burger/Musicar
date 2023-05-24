@@ -6,7 +6,8 @@ Arquivo orientado a objeto para descrever as ações financeiras da escola.
         2. Saídas
         3. Situação atual
         4. Previsão
-        5.
+        5. Demonstrativo de cada professor
+        6.
 
     * Ações a se tomar?
         1. Adicionar nova entrada

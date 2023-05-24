@@ -7,9 +7,12 @@ Arquivo orientado a objeto para descrever os estudantes presentes na escola.
         2. Idade
         3. Aniversário
         4. Nome do responsável
-        5. Telefone para contato
-        6. E-mail para contato
-        7.
+        5. CPF do responsável
+        6. Endereço do professor
+        7. Telefone para contato
+        8. E-mail para contato
+        9. Contrato [Asssinado / Renovado]
+        10. Assinar
 
         INSTITUCIONAIS
         1. Data de entrada na escola
@@ -17,9 +20,10 @@ Arquivo orientado a objeto para descrever os estudantes presentes na escola.
         3. Pagamento por aula
         4. Possui desconto?
         5. Valor do desconto?
-        6. Pagamento total
+        6. Pagamento total do responsável
         7. Situação atual financeira
-        8.
+        8. Tipo de plano para cada modalidade
+        9.
 
     * Ações a se tomar com os estudantes?
         1. Adicionar em uma turma

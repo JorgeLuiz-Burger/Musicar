@@ -9,7 +9,8 @@ Arquivo orientado a objeto para descrever as salas presentes na escola.
         5. Tamanho da sala
         6. Possíveis aplicações
         7. Situação da sala
-        8.
+        8. Recepção
+        9.
 
     * Ações a se tomar com as matérias?
         1. Alterar a identificação da sala

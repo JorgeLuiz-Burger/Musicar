@@ -7,7 +7,9 @@ Arquivo orientado a objeto para descrever as matérias presentes na escola.
         3. Sala utilizada
         4. Nome do professor
         5. Quantidade de estudantes
-        6.
+        6. Monitor
+        7. Recuperação
+        8.
 
     * Ações a se tomar com as matérias?
         1. Adicionar uma turma

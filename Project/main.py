@@ -1,16 +1,23 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+from Teachers import Person as teacher
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    print("Inciando o processamento.")
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    Jorge = teacher.newTeacher()
+
+    Jorge.setName("Jorge Luiz")
+    Jorge.setAge(28)
+
+    error = Jorge.verifyData()
+    if (error != 0):
+        print(f"\n\tErro encontrado {error}")
+    else:
+        Jorge.showInfo()
+
+
+
+
+
+
+# End of file
